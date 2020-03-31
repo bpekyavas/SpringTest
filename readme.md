@@ -27,6 +27,6 @@ docker run -d --name sonarqube -p 9000:9000 sonarqube:7.5-community
 
 ### Useful links
 
-https://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/html/boot-features-testing.html
-https://www.baeldung.com/java-spring-mockito-mock-mockbean
-https://www.baeldung.com/spring-boot-testing
+- https://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/html/boot-features-testing.html
+- https://www.baeldung.com/java-spring-mockito-mock-mockbean
+- https://www.baeldung.com/spring-boot-testing

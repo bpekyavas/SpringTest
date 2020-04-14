@@ -35,7 +35,7 @@ public class EmployeeRestControllerIntegrationTest {
             throws Exception {
 
         // Using here BDDMockito, not normal mockito
-        Employee alex = new Employee(1L, "Alex");
+        Employee alex = new Employee(1L, "Alex", "IT");
         List<Employee> allEmployees = Arrays.asList(alex);
         given(service.getAllEmployees()).willReturn(allEmployees);
 
@@ -44,6 +44,7 @@ public class EmployeeRestControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1))) //jsonPath  provides an easy way to extract JSON doc
                 .andExpect(jsonPath("$[0].name", is(alex.getName())))
+                .andExpect(jsonPath("$.department", is(alex.getDepartment())))
                 .andExpect(jsonPath("$[0].id", is(1)));
     }
 
@@ -51,7 +52,7 @@ public class EmployeeRestControllerIntegrationTest {
     public void givenEmployee_whenGetEmployeeWithName_thenReturnJsonObject()
             throws Exception {
 
-        Employee alex = new Employee(1L, "Alex");
+        Employee alex = new Employee(1L, "Alex", "IT");
         given(service.getEmployeeByName("Alex")).willReturn(alex);
 
         mvc.perform(get("/api/employee/?name=Alex")
@@ -59,6 +60,7 @@ public class EmployeeRestControllerIntegrationTest {
                 .andExpect(status().isOk())
                 //.andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.name", is(alex.getName())))
-                .andExpect(jsonPath("$.id", is(1)));
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.department", is(alex.getDepartment())));
     }
 }

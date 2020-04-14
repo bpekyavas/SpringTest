@@ -1,6 +1,7 @@
 package jp.co.axa.springtest.controllers;
 
 import java.util.List;
+
 import jp.co.axa.springtest.entities.Employee;
 import jp.co.axa.springtest.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,10 @@ public class EmployeeRestController {
     @GetMapping("/employee")
     public Employee getEmployee(@RequestParam(defaultValue = "Alex") String name) {
         return employeeService.getEmployeeByName(name);
+    }
+
+    @GetMapping("/employee/department")
+    public List<Employee> getEmployeeByDepartment(@RequestParam(defaultValue = "IT") String department) {
+        return employeeService.getAllEmployeesByDepartment(department);
     }
 }

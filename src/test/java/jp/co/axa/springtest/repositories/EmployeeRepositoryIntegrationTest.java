@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +24,7 @@ public class EmployeeRepositoryIntegrationTest {
     @Test
     public void whenFindByName_thenReturnEmployee() {
         // given
-        Employee jonathan = new Employee("Jonathan");
+        Employee jonathan = new Employee("Jonathan", "IT");
         entityManager.persist(jonathan);
         entityManager.flush();
 
@@ -42,5 +43,22 @@ public class EmployeeRepositoryIntegrationTest {
         // then
         assertThat(found).isNull();
     }
+
+    @Test
+    @Sql
+    public void whenFindByDepartment_thenReturnEmployeeList() {
+        // given
+        Employee jonathan = new Employee("Jonathan", "IT");
+        entityManager.persist(jonathan);
+        entityManager.flush();
+
+        // when
+        Employee found = employeeRepository.findByName(jonathan.getName());
+
+        // then
+        assertThat(found.getName()).isEqualTo(jonathan.getName());
+    }
+
+
 
 }

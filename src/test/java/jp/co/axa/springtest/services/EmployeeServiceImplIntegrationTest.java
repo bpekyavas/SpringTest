@@ -1,6 +1,7 @@
 package jp.co.axa.springtest.services;
 
 import jp.co.axa.springtest.entities.Employee;
+import jp.co.axa.springtest.helper.EmployeeHelper;
 import jp.co.axa.springtest.repositories.EmployeeRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,17 +24,25 @@ public class EmployeeServiceImplIntegrationTest {
         public EmployeeService employeeService() {
             return new EmployeeServiceImpl();
         }
+
+        @Bean
+        public EmployeeHelper employeeHelper() {
+            return new EmployeeHelper();
+        }
     }
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private EmployeeHelper employeeHelper;
 
     @MockBean // Creates a Mock for the EmployeeRepository ( replace the original @AutoWired bean)
     private EmployeeRepository employeeRepository;
 
     @Before
     public void setUp() {
-        Employee alex = new Employee(1L, "Alex");
+        Employee alex = new Employee(1L, "Alex", "IT");
         Mockito.when(employeeRepository.findByName(alex.getName()))
                 .thenReturn(alex);
     }

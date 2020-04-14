@@ -44,21 +44,4 @@ public class EmployeeRepositoryIntegrationTest {
         assertThat(found).isNull();
     }
 
-    @Test
-    @Sql
-    public void whenFindByDepartment_thenReturnEmployeeList() {
-        // given
-        Employee jonathan = new Employee("Jonathan", "IT");
-        entityManager.persist(jonathan);
-        entityManager.flush();
-
-        // when
-        Employee found = employeeRepository.findByName(jonathan.getName());
-
-        // then
-        assertThat(found.getName()).isEqualTo(jonathan.getName());
-    }
-
-
-
 }

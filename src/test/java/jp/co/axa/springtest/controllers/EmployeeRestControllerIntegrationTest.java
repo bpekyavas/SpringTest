@@ -44,7 +44,7 @@ public class EmployeeRestControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1))) //jsonPath  provides an easy way to extract JSON doc
                 .andExpect(jsonPath("$[0].name", is(alex.getName())))
-                .andExpect(jsonPath("$.department", is(alex.getDepartment())))
+                .andExpect(jsonPath("$[0].department", is(alex.getDepartment())))
                 .andExpect(jsonPath("$[0].id", is(1)));
     }
 

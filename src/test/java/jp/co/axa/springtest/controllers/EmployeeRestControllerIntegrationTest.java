@@ -2,8 +2,10 @@ package jp.co.axa.springtest.controllers;
 
 import java.util.Arrays;
 import java.util.List;
+
 import jp.co.axa.springtest.entities.Employee;
 import jp.co.axa.springtest.services.EmployeeService;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +64,26 @@ public class EmployeeRestControllerIntegrationTest {
                 .andExpect(jsonPath("$.name", is(alex.getName())))
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.department", is(alex.getDepartment())));
+    }
+
+    @Test
+    public void givenDepartment_whenGetEmployeeByDepartment_thenReturnJsonObject()
+            throws Exception {
+
+        Employee alex = new Employee(1L, "Alex", "IT");
+        Employee berna = new Employee(2L, "Berna", "IT");
+
+        given(service.getAllEmployeesByDepartment("IT")).willReturn(Lists.newArrayList(alex, berna));
+
+        mvc.perform(get("/api/employee/department/?department=IT")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].name", is(alex.getName())))
+                .andExpect(jsonPath("$[0].department", is(alex.getDepartment())))
+                .andExpect(jsonPath("$[0].id", is(1)))
+                .andExpect(jsonPath("$[1].name", is(berna.getName())))
+                .andExpect(jsonPath("$[1].department", is(berna.getDepartment())))
+                .andExpect(jsonPath("$[1].id", is(2)));
     }
 }

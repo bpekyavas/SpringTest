@@ -1,9 +1,10 @@
-package jp.co.axa.springtest.services;
+package jp.co.axa.springtest.unittest.services;
 
 import jp.co.axa.springtest.entities.Employee;
 import jp.co.axa.springtest.exception.EmployeeNotFoundException;
 import jp.co.axa.springtest.helper.EmployeeHelper;
 import jp.co.axa.springtest.repositories.EmployeeRepository;
+import jp.co.axa.springtest.services.EmployeeServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

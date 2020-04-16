@@ -1,6 +1,7 @@
-package jp.co.axa.springtest.repositories;
+package jp.co.axa.springtest.it.repositories;
 
 import jp.co.axa.springtest.entities.Employee;
+import jp.co.axa.springtest.repositories.EmployeeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

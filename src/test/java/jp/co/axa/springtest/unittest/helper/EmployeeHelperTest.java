@@ -1,7 +1,8 @@
-package jp.co.axa.springtest.helper;
+package jp.co.axa.springtest.unittest.helper;
 
 import jp.co.axa.springtest.entities.Employee;
 import jp.co.axa.springtest.exception.EmployeeNotFoundException;
+import jp.co.axa.springtest.helper.EmployeeHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

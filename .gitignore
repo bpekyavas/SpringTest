@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### For mac folders
+**/.DS_Store

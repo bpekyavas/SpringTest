@@ -1,8 +1,10 @@
-package jp.co.axa.springtest.services;
+package jp.co.axa.springtest.it.services;
 
 import jp.co.axa.springtest.entities.Employee;
 import jp.co.axa.springtest.helper.EmployeeHelper;
 import jp.co.axa.springtest.repositories.EmployeeRepository;
+import jp.co.axa.springtest.services.EmployeeService;
+import jp.co.axa.springtest.services.EmployeeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

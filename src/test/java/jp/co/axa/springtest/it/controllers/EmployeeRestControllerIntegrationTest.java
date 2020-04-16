@@ -1,8 +1,9 @@
-package jp.co.axa.springtest.controllers;
+package jp.co.axa.springtest.it.controllers;
 
 import java.util.Arrays;
 import java.util.List;
 
+import jp.co.axa.springtest.controllers.EmployeeRestController;
 import jp.co.axa.springtest.entities.Employee;
 import jp.co.axa.springtest.services.EmployeeService;
 import org.assertj.core.util.Lists;
